@@ -1,0 +1,3301 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>สุสานหอย | SUSANHOI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Kanit",sans-serif;
+    color:#fff;
+    background:#030406;
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   FONT SYSTEM
+   Thai UI/content = Kanit
+   Display / English = Orbitron
+===================================================== */
+
+html, body, button, input, textarea, select, option,
+label, a, p, span, small, strong, em, div, section, article, header, footer, nav, main,
+h1, h2, h3, h4, h5, h6{
+    font-family:"Kanit",sans-serif;
+}
+
+::before, ::after{
+    font-family:inherit;
+}
+
+.logo,
+.nav-links,
+.hero-label,
+.hero h1,
+.section-title .small,
+.member-username,
+.member-youtube,
+.founder-label,
+.fortune-status,
+.fortune-btn,
+.fortune-hint,
+.astro-label,
+.tarot-zodiac,
+.luck{
+    font-family:"Orbitron","Kanit",sans-serif;
+}
+
+.member-name,
+.member-role,
+.member-desc,
+.founder-name,
+.founder-description,
+.founder-quote,
+.search-input,
+.search-results,
+#fortuneName,
+#fortuneText,
+footer{
+    font-family:"Kanit",sans-serif;
+}
+
+/* =====================================================
+   NIGHT GRAVEYARD BACKGROUND
+===================================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    z-index:-10;
+
+    background:
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(80,95,135,.25),
+            transparent 28%
+        ),
+        linear-gradient(
+            to bottom,
+            #05070d 0%,
+            #080a12 38%,
+            #09070a 70%,
+            #030303 100%
+        );
+}
+
+/* stars */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    z-index:-9;
+
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px),
+        radial-gradient(circle,rgba(170,190,255,.5) 1px,transparent 1px);
+
+    background-size:
+        150px 150px,
+        230px 230px;
+
+    background-position:
+        20px 30px,
+        80px 100px;
+
+    opacity:.18;
+    pointer-events:none;
+}
+
+/* =====================================================
+   NIGHT SCENE
+===================================================== */
+
+.night-scene{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-8;
+
+    overflow:hidden;
+}
+
+/* moon */
+
+.moon{
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:12%;
+    top:90px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #ffffff,
+            #cdd3df 60%,
+            #9da5b5
+        );
+
+    opacity:.75;
+
+    box-shadow:
+        0 0 35px rgba(210,220,255,.2),
+        0 0 120px rgba(130,150,220,.08);
+}
+
+/* moon craters */
+
+.moon::before{
+    content:"";
+
+    position:absolute;
+
+    width:25px;
+    height:25px;
+
+    left:35px;
+    top:40px;
+
+    border-radius:50%;
+
+    background:rgba(100,105,120,.16);
+
+    box-shadow:
+        60px 30px 0 rgba(100,105,120,.1),
+        30px 80px 0 rgba(100,105,120,.12);
+}
+
+/* fog */
+
+.fog{
+    position:absolute;
+
+    left:-10%;
+    bottom:15%;
+
+    width:120%;
+    height:180px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(180,190,210,.08),
+            transparent 70%
+        );
+
+    filter:blur(18px);
+
+    animation:fogMove 14s ease-in-out infinite alternate;
+}
+
+@keyframes fogMove{
+
+    from{
+        transform:translateX(-5%);
+    }
+
+    to{
+        transform:translateX(5%);
+    }
+
+}
+
+/* graveyard ground */
+
+.graveyard-ground{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:180px;
+
+    background:
+        linear-gradient(
+            to top,
+            #010101,
+            #050507 70%,
+            transparent
+        );
+}
+
+/* graves */
+
+.grave{
+    position:absolute;
+
+    bottom:65px;
+
+    width:45px;
+    height:65px;
+
+    border-radius:
+        22px 22px 3px 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #08090b,
+            #16171b,
+            #070708
+        );
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.7);
+}
+
+.grave::before{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:12px;
+
+    width:3px;
+    height:35px;
+
+    transform:translateX(-50%);
+
+    background:#090909;
+}
+
+.grave::after{
+    content:"";
+
+    position:absolute;
+
+    top:28px;
+    left:7px;
+
+    right:7px;
+
+    height:3px;
+
+    background:#090909;
+}
+
+.g1{
+    left:8%;
+    transform:rotate(-5deg) scale(.8);
+}
+
+.g2{
+    left:18%;
+    transform:rotate(4deg) scale(1.15);
+}
+
+.g3{
+    left:30%;
+    transform:rotate(-3deg);
+}
+
+.g4{
+    right:28%;
+    transform:rotate(4deg) scale(.85);
+}
+
+.g5{
+    right:17%;
+    transform:rotate(-6deg) scale(1.1);
+}
+
+.g6{
+    right:6%;
+    transform:rotate(3deg) scale(.75);
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:rgba(3,4,7,.78);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+}
+
+.nav-inner{
+    min-height:76px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.logo{
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:#d92727;
+}
+
+.nav-sub{
+    color:#555;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+    width:280px;
+
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+
+    padding:11px 17px;
+
+    border-radius:30px;
+
+    border:1px solid #292b31;
+
+    outline:none;
+
+    background:#0c0d10;
+
+    color:#fff;
+
+    font-family:inherit;
+}
+
+.search-box input:focus{
+    border-color:#a92a2a;
+
+    box-shadow:
+        0 0 20px rgba(150,0,0,.15);
+}
+
+.search-results{
+    position:absolute;
+
+    top:50px;
+
+    left:0;
+    right:0;
+
+    display:none;
+
+    overflow:hidden;
+
+    border:
+        1px solid #292b31;
+
+    border-radius:15px;
+
+    background:#0c0d10;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.7);
+}
+
+.search-results.show{
+    display:block;
+}
+
+.search-result{
+    padding:13px 16px;
+
+    border-bottom:
+        1px solid #1d1e22;
+
+    cursor:pointer;
+}
+
+.search-result:hover{
+    background:#17181c;
+}
+
+.search-result small{
+    display:block;
+
+    color:#555;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:620px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+}
+
+.hero-content{
+    position:relative;
+
+    z-index:2;
+}
+
+.hero-label{
+    color:#b63232;
+
+    letter-spacing:7px;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:
+        clamp(80px,14vw,170px);
+
+    line-height:.85;
+
+    font-weight:700;
+
+    text-shadow:
+        0 0 35px rgba(255,0,0,.12),
+        0 20px 70px #000;
+}
+
+.hero h1 span{
+    color:#c52b2b;
+}
+
+.hero p{
+    margin-top:30px;
+
+    color:#666;
+
+    font-size:17px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+    padding:110px 0;
+}
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-title .small{
+    color:#a72d2d;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+}
+
+.section-title h2{
+    margin-top:8px;
+
+    font-size:43px;
+}
+
+.section-title p{
+    margin-top:8px;
+
+    color:#666;
+}
+
+/* =====================================================
+   FOUNDER
+===================================================== */
+
+.founder-card{
+    position:relative;
+
+    overflow:hidden;
+
+    display:grid;
+
+    grid-template-columns:280px 1fr;
+
+    gap:45px;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,9,12,.95),
+            rgba(8,9,12,.96)
+        );
+
+    border:
+        1px solid rgba(150,40,40,.25);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5);
+}
+
+.founder-image{
+    position:relative;
+}
+
+.founder-image img{
+    width:100%;
+
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    border:
+        2px solid rgba(170,50,50,.4);
+}
+
+.founder-tag{
+    position:absolute;
+
+    left:15px;
+    bottom:15px;
+
+    padding:6px 15px;
+
+    border-radius:20px;
+
+    background:#a92727;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.founder-info{
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.founder-eyebrow{
+    color:#a72d2d;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+}
+
+.founder-info h3{
+    font-size:55px;
+}
+
+.founder-info h3 span{
+    color:#a72d2d;
+}
+
+.founder-username{
+    color:#555;
+
+    margin-bottom:25px;
+}
+
+.founder-info p{
+    color:#999;
+
+    line-height:1.9;
+
+    max-width:720px;
+}
+
+.founder-highlight{
+    margin-top:25px;
+
+    padding:18px 20px;
+
+    border-left:3px solid #a72d2d;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:#ccc;
+}
+
+.youtube-btn{
+    display:inline-flex;
+
+    width:max-content;
+
+    margin-top:25px;
+
+    padding:11px 21px;
+
+    border-radius:30px;
+
+    background:#a92727;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.youtube-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 30px rgba(170,0,0,.25);
+}
+
+/* =====================================================
+   MEMBERS
+===================================================== */
+
+.team-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:25px;
+}
+
+.member-card{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111216,
+            #08090b
+        );
+
+    border:
+        1px solid #22242a;
+
+    transition:.3s ease;
+}
+
+.member-card:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(170,50,50,.45);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.55);
+}
+
+.member-card.highlight{
+    animation:
+        highlightCard 1.2s ease;
+}
+
+@keyframes highlightCard{
+
+    0%,100%{
+        box-shadow:
+            0 0 0 transparent;
+    }
+
+    50%{
+        box-shadow:
+            0 0 50px rgba(180,20,20,.5);
+
+        border-color:#a52b2b;
+    }
+
+}
+
+.member-number{
+    position:absolute;
+
+    right:20px;
+    top:15px;
+
+    color:#292b30;
+
+    font-size:30px;
+
+    font-weight:700;
+}
+
+.member-image{
+    width:130px;
+    height:130px;
+
+    margin:
+        10px auto 22px;
+
+    position:relative;
+}
+
+.member-image::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-7px;
+
+    border-radius:50%;
+
+    border:
+        1px solid #3a2424;
+}
+
+.member-image img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    border-radius:50%;
+}
+
+.member-name{
+    text-align:center;
+
+    font-size:28px;
+}
+
+.member-username{
+    text-align:center;
+
+    color:#555;
+
+    font-size:13px;
+}
+
+.member-desc{
+    text-align:center;
+
+    color:#888;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    margin:20px 0;
+
+    min-height:72px;
+}
+
+.member-youtube{
+    display:block;
+
+    text-align:center;
+
+    padding:10px;
+
+    border-radius:30px;
+
+    border:1px solid #303238;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.member-youtube:hover{
+    background:#a92727;
+
+    border-color:#a92727;
+}
+
+/* =====================================================
+   ASTROLOGY FORTUNE SECTION
+===================================================== */
+
+.fortune-section{
+    position:relative;
+    min-height:980px;
+    overflow:hidden;
+    padding:120px 0 150px;
+    isolation:isolate;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(84,74,170,.18), transparent 27%),
+        radial-gradient(circle at 50% 42%, rgba(24,28,70,.35), transparent 48%),
+        linear-gradient(180deg,#070814 0%,#04050d 58%,#020207 100%);
+}
+
+.fortune-section::before{
+    content:"";
+    position:absolute;
+    inset:-30%;
+    z-index:-3;
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(150,145,255,.025) 0deg 2deg,
+            transparent 2deg 15deg
+        );
+    animation:astroRotate 100s linear infinite;
+    pointer-events:none;
+}
+
+.fortune-section::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-260px;
+    width:900px;
+    height:900px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(67,57,140,.12),transparent 63%);
+    z-index:-2;
+    pointer-events:none;
+}
+
+@keyframes astroRotate{
+    to{transform:rotate(360deg);}
+}
+
+.fortune-moon{
+    position:absolute;
+    width:250px;
+    height:250px;
+    top:75px;
+    right:10%;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 35% 30%,#f1f2ff,#c3c6da 62%,#9296aa);
+    opacity:.12;
+    box-shadow:
+        0 0 80px rgba(160,165,255,.18),
+        0 0 180px rgba(120,110,255,.08);
+    z-index:-1;
+}
+
+.fortune-moon::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    box-shadow:
+        -35px 45px 0 -22px rgba(80,84,110,.2),
+        45px 70px 0 -28px rgba(80,84,110,.15),
+        25px -15px 0 -25px rgba(80,84,110,.13);
+}
+
+/* ---------- title ---------- */
+
+.fortune-title{
+    position:relative;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.fortune-title .small{
+    color:#8e8bd4;
+    letter-spacing:7px;
+    font-size:12px;
+}
+
+.fortune-title h2{
+    margin-top:12px;
+    font-family:"Kanit",sans-serif;
+    font-size:clamp(36px,5vw,58px);
+    font-weight:500;
+    letter-spacing:3px;
+    color:#e8e7ff;
+    text-shadow:
+        0 0 25px rgba(145,135,255,.25),
+        0 0 70px rgba(100,90,220,.12);
+}
+
+.fortune-title p{
+    color:#777994;
+    margin-top:10px;
+}
+
+/* ---------- zodiac decoration ---------- */
+
+.astro-stage{
+    position:relative;
+    width:min(900px,100%);
+    height:650px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.astro-orbit{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.astro-orbit.one{
+    width:470px;
+    height:470px;
+    border:1px solid rgba(152,146,235,.24);
+    box-shadow:0 0 45px rgba(100,90,220,.06);
+    animation:orbitSpin 42s linear infinite;
+}
+
+.astro-orbit.two{
+    width:570px;
+    height:570px;
+    border:1px dashed rgba(145,140,220,.17);
+    animation:orbitSpinReverse 62s linear infinite;
+}
+
+.astro-orbit.three{
+    width:680px;
+    height:680px;
+    border:1px solid rgba(145,140,220,.08);
+    animation:orbitSpin 85s linear infinite;
+}
+
+@keyframes orbitSpin{
+    to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+@keyframes orbitSpinReverse{
+    to{transform:translate(-50%,-50%) rotate(-360deg);}
+}
+
+.zodiac-ring{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:720px;
+    height:720px;
+    transform:translate(-50%,-50%);
+    border:1px solid rgba(170,165,245,.11);
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.zodiac-sign{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:
+        rotate(calc(var(--i) * 30deg))
+        translateY(-340px)
+        rotate(calc(var(--i) * -30deg));
+    color:#9995db;
+    font-family:"Kanit",sans-serif;
+    font-size:23px;
+    text-shadow:0 0 15px rgba(135,125,255,.45);
+    animation:zodiacPulse 3s ease-in-out infinite;
+    animation-delay:calc(var(--i) * -0.2s);
+}
+
+@keyframes zodiacPulse{
+    0%,100%{opacity:.45;transform:
+        rotate(calc(var(--i) * 30deg))
+        translateY(-340px)
+        rotate(calc(var(--i) * -30deg))
+        scale(.9);}
+    50%{opacity:1;transform:
+        rotate(calc(var(--i) * 30deg))
+        translateY(-340px)
+        rotate(calc(var(--i) * -30deg))
+        scale(1.08);}
+}
+
+/* ---------- constellation dots ---------- */
+
+.constellation{
+    position:absolute;
+    width:680px;
+    height:680px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+}
+
+.constellation span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#d5d2ff;
+    box-shadow:0 0 12px rgba(180,175,255,.8);
+}
+
+.constellation::before,
+.constellation::after{
+    content:"";
+    position:absolute;
+    inset:18%;
+    border:1px solid rgba(180,175,255,.06);
+    transform:rotate(45deg);
+}
+
+/* ---------- center sigil ---------- */
+
+.astro-core{
+    position:relative;
+    width:400px;
+    height:400px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:5;
+}
+
+.astro-core::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1px solid rgba(173,168,255,.28);
+    box-shadow:
+        0 0 55px rgba(105,95,220,.12),
+        inset 0 0 55px rgba(105,95,220,.08);
+}
+
+.astro-core::after{
+    content:"✦  ·  ☾  ·  ✦  ·  ☼  ·  ✦";
+    position:absolute;
+    inset:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px dashed rgba(173,168,255,.17);
+    border-radius:50%;
+    color:rgba(190,185,255,.45);
+    font-family:"Kanit",sans-serif;
+    font-size:12px;
+    letter-spacing:5px;
+    animation:orbitSpinReverse 28s linear infinite;
+}
+
+.astro-glyph{
+    position:absolute;
+    inset:70px;
+    border-radius:50%;
+    border:1px solid rgba(185,180,255,.16);
+    transform:rotate(45deg);
+}
+
+.astro-glyph::before,
+.astro-glyph::after{
+    content:"";
+    position:absolute;
+    inset:18%;
+    border:1px solid rgba(185,180,255,.12);
+}
+
+.astro-glyph::after{
+    transform:rotate(90deg);
+}
+
+.astro-label{
+    position:absolute;
+    top:8px;
+    color:#716da8;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+/* ---------- tarot ---------- */
+
+.tarot-wrapper{
+    position:relative;
+    width:290px;
+    height:430px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    perspective:1400px;
+    z-index:10;
+}
+
+.magic-circle{
+    position:absolute;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    border:1px solid rgba(159,151,240,.2);
+    box-shadow:
+        0 0 60px rgba(90,80,200,.1),
+        inset 0 0 50px rgba(90,80,200,.05);
+}
+
+.magic-circle::before{
+    content:"";
+    position:absolute;
+    inset:28px;
+    border-radius:50%;
+    border:1px dashed rgba(170,165,245,.2);
+}
+
+.magic-circle::after{
+    content:"☾   ✦   ☼   ✦   ☽";
+    position:absolute;
+    inset:-25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(177,171,255,.38);
+    font-size:13px;
+    letter-spacing:20px;
+    animation:orbitSpin 35s linear infinite;
+}
+
+.magic-circle.active{
+    animation:circleSpin 1.8s linear infinite;
+    box-shadow:
+        0 0 80px rgba(110,100,240,.25),
+        inset 0 0 70px rgba(110,100,240,.12);
+}
+
+@keyframes circleSpin{
+    to{transform:rotate(360deg);}
+}
+
+/* ---------- tarot card ---------- */
+
+.tarot-card{
+    width:275px;
+    height:410px;
+    position:relative;
+    z-index:8;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.tarot-card.flipped{
+    transform:rotateY(180deg);
+}
+
+.tarot-front,
+.tarot-back{
+    position:absolute;
+    inset:0;
+    border-radius:22px;
+    overflow:hidden;
+    backface-visibility:hidden;
+}
+
+/* card front */
+
+.tarot-front{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(99,91,190,.25),transparent 34%),
+        linear-gradient(145deg,#111229,#060711 72%);
+    border:1px solid rgba(188,181,255,.4);
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.75),
+        0 0 55px rgba(75,65,170,.16),
+        inset 0 0 45px rgba(120,110,230,.08);
+}
+
+.tarot-front::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(188,181,255,.26);
+    border-radius:16px;
+}
+
+.tarot-front::after{
+    content:"";
+    position:absolute;
+    inset:24px;
+    border:1px dashed rgba(188,181,255,.12);
+    border-radius:12px;
+}
+
+.tarot-front .tarot-zodiac{
+    position:absolute;
+    top:34px;
+    font-size:12px;
+    letter-spacing:8px;
+    color:#7773aa;
+}
+
+.tarot-symbol{
+    position:relative;
+    z-index:2;
+    font-family:"Kanit",sans-serif;
+    font-size:78px;
+    color:#d2cfff;
+    text-shadow:
+        0 0 18px rgba(160,150,255,.55),
+        0 0 50px rgba(110,95,230,.2);
+    animation:tarotPulse 3s ease-in-out infinite;
+}
+
+@keyframes tarotPulse{
+    0%,100%{transform:scale(1);opacity:.82;}
+    50%{transform:scale(1.08);opacity:1;}
+}
+
+.tarot-front h3{
+    position:relative;
+    z-index:2;
+    margin-top:18px;
+    font-family:"Kanit",sans-serif;
+    font-size:25px;
+    letter-spacing:6px;
+    color:#e8e6ff;
+}
+
+.tarot-front p{
+    position:relative;
+    z-index:2;
+    color:#77749c;
+    font-size:11px;
+    letter-spacing:5px;
+    margin-top:7px;
+}
+
+/* card back / result */
+
+.tarot-back{
+    transform:rotateY(180deg);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:28px;
+    background:
+        radial-gradient(circle at 50% 22%,rgba(95,86,180,.25),transparent 36%),
+        linear-gradient(145deg,#12132b,#060710);
+    border:1px solid rgba(193,187,255,.45);
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.8),
+        0 0 45px rgba(80,70,180,.16);
+}
+
+.tarot-back::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(190,185,255,.25);
+    border-radius:16px;
+}
+
+.tarot-back::after{
+    content:"✦";
+    position:absolute;
+    font-size:170px;
+    color:rgba(170,165,255,.025);
+}
+
+.tarot-back img{
+    width:105px;
+    height:105px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid rgba(190,185,255,.55);
+    box-shadow:
+        0 0 30px rgba(125,115,235,.25);
+    position:relative;
+    z-index:2;
+}
+
+.tarot-back h3{
+    position:relative;
+    z-index:2;
+    font-family:"Kanit",sans-serif;
+    font-size:29px;
+    margin-top:15px;
+    color:#e9e7ff;
+}
+
+.tarot-back p{
+    position:relative;
+    z-index:2;
+    margin-top:10px;
+    color:#a0a0b5;
+    font-size:13px;
+    line-height:1.75;
+}
+
+.tarot-back .luck{
+    color:#bbb6ff;
+    margin-top:13px;
+    font-size:13px;
+}
+
+/* ---------- suspense animation ---------- */
+
+.tarot-card.drawing{
+    animation:cardShake .10s infinite;
+}
+
+@keyframes cardShake{
+    0%{transform:translateX(0) rotateZ(0deg);}
+    25%{transform:translateX(-6px) rotateZ(-1deg);}
+    50%{transform:translateX(6px) rotateZ(1deg);}
+    75%{transform:translateX(-4px) rotateZ(-.7deg);}
+    100%{transform:translateX(0) rotateZ(0deg);}
+}
+
+.tarot-wrapper.drawing::before{
+    content:"";
+    position:absolute;
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(115,100,245,.18),transparent 65%);
+    animation:glowPulse .6s ease-in-out infinite;
+    z-index:1;
+}
+
+@keyframes glowPulse{
+    0%,100%{transform:scale(.75);opacity:.3;}
+    50%{transform:scale(1.2);opacity:1;}
+}
+
+/* ---------- status + button ---------- */
+
+.fortune-status{
+    min-height:32px;
+    margin:5px auto 0;
+    text-align:center;
+    color:#706d91;
+    font-family:"Kanit",sans-serif;
+    font-size:12px;
+    letter-spacing:4px;
+}
+
+.fortune-status.active{
+    color:#c3bfff;
+    text-shadow:0 0 18px rgba(150,140,255,.55);
+    animation:statusPulse .7s infinite alternate;
+}
+
+@keyframes statusPulse{
+    from{opacity:.45;}
+    to{opacity:1;}
+}
+
+.fortune-btn{
+    display:block;
+    margin:10px auto 0;
+    border:1px solid rgba(170,165,255,.32);
+    padding:14px 32px;
+    border-radius:30px;
+    background:
+        linear-gradient(135deg,rgba(93,84,190,.28),rgba(31,29,76,.55));
+    color:#e4e2ff;
+    font-family:inherit;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:
+        0 12px 35px rgba(50,45,130,.18),
+        inset 0 0 20px rgba(170,165,255,.04);
+    transition:.3s;
+}
+
+.fortune-btn:hover{
+    transform:translateY(-4px);
+    border-color:rgba(205,200,255,.7);
+    box-shadow:
+        0 18px 45px rgba(75,65,190,.28),
+        0 0 25px rgba(130,120,255,.12);
+}
+
+.fortune-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.fortune-hint{
+    text-align:center;
+    margin-top:13px;
+    color:#50516a;
+    font-size:12px;
+}
+
+@media(max-width:700px){
+
+    .fortune-section{
+        min-height:850px;
+        padding:100px 0 120px;
+    }
+
+    .astro-stage{
+        height:570px;
+    }
+
+    .astro-orbit.one{
+        width:390px;
+        height:390px;
+    }
+
+    .astro-orbit.two{
+        width:470px;
+        height:470px;
+    }
+
+    .astro-orbit.three,
+    .zodiac-ring{
+        width:560px;
+        height:560px;
+    }
+
+    .zodiac-sign{
+        transform:
+            rotate(calc(var(--i) * 30deg))
+            translateY(-265px)
+            rotate(calc(var(--i) * -30deg));
+    }
+
+    .astro-core{
+        width:340px;
+        height:340px;
+    }
+
+    .tarot-wrapper{
+        width:250px;
+        height:380px;
+    }
+
+    .tarot-card{
+        width:245px;
+        height:365px;
+    }
+
+    .magic-circle{
+        width:450px;
+        height:450px;
+    }
+
+    .fortune-moon{
+        width:160px;
+        height:160px;
+        right:4%;
+    }
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    padding:40px 0;
+
+    text-align:center;
+
+    color:#4d4d4d;
+
+    border-top:
+        1px solid #181a1f;
+}
+
+footer strong{
+    color:#a82b32;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1100px){
+
+    .team-grid{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:900px){
+
+    .founder-card{
+        grid-template-columns:
+            220px 1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .team-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .nav-sub{
+        display:none;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .nav-inner{
+        flex-wrap:wrap;
+
+        padding:14px 0;
+    }
+
+    .search-box{
+        width:100%;
+
+        order:3;
+    }
+
+    .hero{
+        min-height:500px;
+    }
+
+    .hero h1{
+        font-size:80px;
+    }
+
+    .founder-card{
+        grid-template-columns:1fr;
+
+        padding:25px;
+
+        text-align:center;
+    }
+
+    .founder-image{
+        width:200px;
+
+        margin:auto;
+    }
+
+    .founder-info{
+        align-items:center;
+    }
+
+    .founder-info h3{
+        font-size:42px;
+    }
+
+    .founder-highlight{
+        text-align:left;
+    }
+
+    .tarot-wrapper{
+        transform:scale(.82);
+
+        margin-top:20px;
+
+        margin-bottom:-20px;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:75px 0;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .fortune-title h2{
+        font-size:38px;
+    }
+
+}
+
+
+/* =====================================================
+   FIREFLIES
+===================================================== */
+
+.firefly{
+    position:fixed;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#c9d7ff;
+
+    box-shadow:
+        0 0 10px #b8c9ff;
+
+    opacity:.5;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+    animation:
+        fireflyFloat
+        var(--duration)
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes fireflyFloat{
+
+    from{
+        transform:
+            translate(
+                0,
+                0
+            );
+
+        opacity:.15;
+    }
+
+    to{
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            );
+
+        opacity:.7;
+    }
+
+}
+
+
+/* FONT OVERRIDES — ensure every visible text element has a loaded font */
+.logo,.nav-sub,.hero-label,.hero h1,.section-title .small,.member-username,.member-youtube,
+.founder-eyebrow,.fortune-title .small,.fortune-status,.fortune-btn,.fortune-hint,.astro-label,
+.tarot-zodiac,.luck{font-family:"Orbitron","Kanit",sans-serif;}
+
+.hero p,.section-title h2,.section-title p,.founder-tag,.founder-info h3,.founder-username,
+.founder-info p,.founder-highlight,.youtube-btn,.member-name,.member-desc,.fortune-title h2,
+.fortune-title p,.tarot-front h3,.tarot-front p,.tarot-back h3,.tarot-back p,footer{
+    font-family:"Kanit",sans-serif;
+}
+
+
+/* FINAL FONT FIX */
+html, body, button, input, textarea, select, option, label, p, span, small, strong, em, a, li, div, section, article, header, footer, nav, main { font-family: "Kanit", sans-serif; }
+::before, ::after { font-family: inherit; }
+.logo, .nav-links, .hero-label, .hero h1, .section-title .small, .member-username, .member-youtube, .founder-label, .astro-label, .tarot-zodiac, .luck { font-family: "Orbitron", "Kanit", sans-serif; }
+.fortune-title h2, .fortune-title p, .fortune-btn, .fortune-hint, .fortune-status, .tarot-card, .tarot-card *, #fortuneName, #fortuneText { font-family: "Kanit", sans-serif !important; }
+.tarot-zodiac, .astro-label { font-family: "Orbitron", "Kanit", sans-serif !important; }
+
+
+
+/* ---------- fortune text overflow + read more ---------- */
+.tarot-back{
+    overflow:hidden !important;
+    box-sizing:border-box;
+    padding:24px 20px 18px;
+}
+.tarot-back img{
+    flex-shrink:0;
+}
+.tarot-back h3{
+    margin:12px 0 0 !important;
+    flex-shrink:0;
+}
+.tarot-back #fortuneText{
+    width:100%;
+    max-height:112px;
+    overflow:hidden;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:4;
+    line-clamp:4;
+    margin:8px 0 0 !important;
+    box-sizing:border-box;
+    word-break:break-word;
+}
+.fortune-read-more{
+    position:relative;
+    z-index:5;
+    margin-top:9px;
+    padding:7px 14px;
+    border:1px solid rgba(190,185,255,.28);
+    border-radius:999px;
+    background:rgba(110,100,240,.12);
+    color:#d8d5ff;
+    font-family:"Kanit",sans-serif !important;
+    font-size:11px;
+    cursor:pointer;
+    transition:.25s ease;
+}
+.fortune-read-more:hover{
+    background:rgba(110,100,240,.25);
+    border-color:rgba(190,185,255,.55);
+    transform:translateY(-1px);
+}
+.tarot-back .luck{
+    margin-top:8px !important;
+}
+
+/* full fortune modal */
+.fortune-modal{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(3,4,10,.78);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:.25s ease;
+}
+.fortune-modal.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+.fortune-modal-box{
+    position:relative;
+    width:min(620px,100%);
+    max-height:min(78vh,700px);
+    overflow:auto;
+    padding:30px 28px 26px;
+    border:1px solid rgba(190,185,255,.28);
+    border-radius:24px;
+    background:linear-gradient(145deg,#111229,#070811);
+    box-shadow:0 30px 100px rgba(0,0,0,.7), inset 0 0 50px rgba(120,110,230,.06);
+}
+.fortune-modal-close{
+    position:absolute;
+    top:14px;
+    right:16px;
+    width:36px;
+    height:36px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    color:#ddd;
+    font-size:20px;
+    cursor:pointer;
+}
+.fortune-modal-label{
+    color:#7773aa;
+    font-family:"Orbitron","Kanit",sans-serif !important;
+    font-size:10px;
+    letter-spacing:3px;
+}
+#fortuneModalName{
+    margin:8px 45px 14px 0;
+    color:#eee;
+    font-family:"Kanit",sans-serif !important;
+    font-size:28px;
+}
+#fortuneModalText{
+    color:#c2c1d0;
+    font-family:"Kanit",sans-serif !important;
+    font-size:15px;
+    line-height:1.9;
+    white-space:pre-line;
+    word-break:break-word;
+}
+@media(max-width:600px){
+    .fortune-modal{padding:14px;}
+    .fortune-modal-box{padding:26px 20px 22px;border-radius:20px;max-height:84vh;}
+    #fortuneModalName{font-size:24px;}
+    #fortuneModalText{font-size:14px;line-height:1.8;}
+}
+</style>
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     NIGHT SCENE
+===================================================== -->
+
+<div class="night-scene">
+
+    <div class="moon"></div>
+
+    <div class="fog"></div>
+
+    <div class="graveyard-ground"></div>
+
+    <div class="grave g1"></div>
+    <div class="grave g2"></div>
+    <div class="grave g3"></div>
+    <div class="grave g4"></div>
+    <div class="grave g5"></div>
+    <div class="grave g6"></div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="container nav-inner">
+
+        <div class="logo">
+            SUSAN<span>HOI</span>
+        </div>
+
+        <div class="nav-sub">
+            THE GRAVEYARD COMMUNITY
+        </div>
+
+        <div class="search-box">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="ค้นหาสมาชิก..."
+                autocomplete="off"
+            >
+
+            <div
+                class="search-results"
+                id="searchResults"
+            ></div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            WELCOME TO
+        </div>
+
+        <h1>
+            สุสาน<span>หอย</span>
+        </h1>
+
+        <p>
+            พื้นที่รวมตัวของเหล่าคนที่พร้อมจะสร้างเรื่องราว
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     FOUNDER
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="small">
+                THE ORIGIN
+            </div>
+
+            <h2>
+                ผู้ก่อตั้งสุสานหอย
+            </h2>
+
+            <p>
+                จุดเริ่มต้นของกลุ่มที่รวมทุกคนเอาไว้
+            </p>
+
+        </div>
+
+
+        <div class="founder-card">
+
+            <div class="founder-image">
+
+                <img
+                    src="https://yt3.ggpht.com/eT2J3pm_NaokeAxqGZWlO7ieB5SrzWYVUrfNaNOS1C7We8zm1bOPhL3XeG2ASZM1wJm4o4p6nTI=s176-c-k-c0x00ffffff-no-rj-mo"
+                    alt="ตัง"
+                >
+
+                <div class="founder-tag">
+                    FOUNDER
+                </div>
+
+            </div>
+
+
+            <div class="founder-info">
+
+                <div class="founder-eyebrow">
+                    FOUNDER OF SUSANHOI
+                </div>
+
+                <h3>
+                    ตัง <span>!</span>
+                </h3>
+
+                <div class="founder-username">
+                    @tannnnnnng
+                </div>
+
+                <p>
+                    ตังคือผู้ก่อตั้งสุสานหอย
+                    และเป็นหนึ่งในจุดเริ่มต้นของกลุ่ม
+                    ที่รวบรวมผู้คนซึ่งมีความชอบในการเล่นเกม
+                    การทำคอนเทนต์ และการสร้างเรื่องราวร่วมกัน
+                    จนกลายมาเป็นสุสานหอยในปัจจุบัน
+                </p>
+
+                <div class="founder-highlight">
+                    “สุสานหอยไม่ได้เกิดขึ้นจากคนเพียงคนเดียว
+                    แต่เกิดจากผู้คนที่เข้ามาสร้างเรื่องราวร่วมกัน”
+                </div>
+
+                <a
+                    class="youtube-btn"
+                    href="https://www.youtube.com/@tannnnnnng"
+                    target="_blank"
+                >
+                    ▶ ดูช่อง YouTube
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMBERS
+===================================================== -->
+
+<section
+    class="section"
+    id="members"
+>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="small">
+                SUSANHOI TEAM
+            </div>
+
+            <h2>
+                สมาชิกสุสานหอย
+            </h2>
+
+            <p>
+                ทุกคนที่ร่วมสร้างเรื่องราวของสุสานหอย
+            </p>
+
+        </div>
+
+
+        <div class="team-grid">
+
+
+            <!-- RED -->
+
+            <article
+                class="member-card"
+                id="red"
+            >
+
+                <div class="member-number">
+                    01
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://cdn.discordapp.com/attachments/424233352804040724/1556755833214214235/images.png?backend=b2&ex=6ac55159&is=6ac3ffd9&hm=88dff574346aa321711fd81f248a97a86f40a762994637ce2b0ab8362c6f5070"
+                        alt="เรด"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    เรด
+                </h3>
+
+                <div class="member-username">
+                    @RedxZeRs
+                </div>
+
+                <p class="member-desc">
+                    สายเกมและคอนเทนต์
+                    พร้อมสร้างความวุ่นวายและเรื่องราวใหม่ ๆ
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@redxzers"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- DZERO -->
+
+            <article
+                class="member-card"
+                id="dzer0"
+            >
+
+                <div class="member-number">
+                    02
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://cdn.discordapp.com/attachments/424233352804040724/1556753149124018186/g6YW9KHFVM-DHWGeH99I58gmZCG_LvJ0SMOiH0tMyg5SnIK3F98_ZT8eU4c8K8i2osGVQa5-s900-c-k-c0x00ffffff-no-rj.png?backend=b2&ex=6ac54ed9&is=6ac3fd59&hm=78360ec6065cf9776a19e5e94f3c6724581ee62834e12e73384a62b0a8efc55c"
+                        alt="นนท์"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    นนท์
+                </h3>
+
+                <div class="member-username">
+                    @DZER0
+                </div>
+
+                <p class="member-desc">
+                    Creator และสายเกม
+                    ผู้ชอบสร้างคอนเทนต์และเรื่องราวในโลก Minecraft
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@dzeronon"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- MAJOR -->
+
+            <article
+                class="member-card"
+                id="major"
+            >
+
+                <div class="member-number">
+                    03
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://cdn.discordapp.com/attachments/424233352804040724/1556755915661910226/npAv2jHcDR3aUnnl6t5CyEpN5IZ-7jnV5pAwN5rA6KbhH7ErAMp__WuwuAoGm07Vzqjec5cTs160-c-k-c0x00ffffff-no-rj.png?backend=b2&ex=6ac5516d&is=6ac3ffed&hm=02ce589581d6f11557f4fc066a7026b433db9aa1a21c4446fdce0c834656355d"
+                        alt="เมเจอร์"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    เมเจอร์
+                </h3>
+
+                <div class="member-username">
+                    @_MAJOR
+                </div>
+
+                <p class="member-desc">
+                    สายปั่นประจำสุสาน
+                    ผู้พร้อมเปลี่ยนทุกสถานการณ์ให้กลายเป็นเรื่องฮา
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@MAJOR_eiei"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- NO -->
+
+            <article
+                class="member-card"
+                id="no"
+            >
+
+                <div class="member-number">
+                    04
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://yt3.googleusercontent.com/ytc/AIdro_myX75FNerDyeefUi6Do1DaRm6GdASrnVElM-IuH-Cy-if_84YGmgk0ZIHdj0LngYUmlgU=s160-c-k-c0x00ffffff-no-rj"
+                        alt="โน่"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    โน่
+                </h3>
+
+                <div class="member-username">
+                    @exsosit
+                </div>
+
+                <p class="member-desc">
+                    อีกหนึ่งสมาชิกที่พร้อมสร้างสีสัน
+                    และเรื่องราวให้กับสุสาน
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@exsosit"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- TANG -->
+
+            <article
+                class="member-card"
+                id="tang"
+            >
+
+                <div class="member-number">
+                    05
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://yt3.ggpht.com/eT2J3pm_NaokeAxqGZWlO7ieB5SrzWYVUrfNaNOS1C7We8zm1bOPhL3XeG2ASZM1wJm4o4p6nTI=s176-c-k-c0x00ffffff-no-rj-mo"
+                        alt="ตัง"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    ตัง
+                </h3>
+
+                <div class="member-username">
+                    @tannnnnnng
+                </div>
+
+                <p class="member-desc">
+                    ผู้ก่อตั้งสุสานหอย
+                    และหนึ่งในจุดเริ่มต้นของกลุ่ม
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@tannnnnnng"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- JUNE -->
+
+            <article
+                class="member-card"
+                id="june"
+            >
+
+                <div class="member-number">
+                    06
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://cdn.discordapp.com/attachments/1417508123916107908/1556758359363817585/IMG_2579.jpg?backend=b2&ex=6ac553b4&is=6ac40234&hm=c0ee0c7578be872cf382efa838f599123aeaf8531f358af38c090ee26a83c3e8"
+                        alt="จูน"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    จูน
+                </h3>
+
+                <div class="member-username">
+                    @jxnee.0z
+                </div>
+
+                <p class="member-desc">
+                    สมาชิกที่เข้ามาเติมสีสัน
+                    และเรื่องราวให้กับสุสาน
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@jxnee.0z"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- THO -->
+
+            <article
+                class="member-card"
+                id="tho"
+            >
+
+                <div class="member-number">
+                    07
+                </div>
+
+                <div class="member-image">
+
+                    <img
+                        src="https://yt3.ggpht.com/j3TR2-Dz1bKSNuBff4J3tSU4PyUxBiLCrNwQYQ0gbaDPxfQPqxLZ_1hDVhdsE09VHrmBccYd1g=s176-c-k-c0x00ffffff-no-rj-mo"
+                        alt="โถ"
+                    >
+
+                </div>
+
+                <h3 class="member-name">
+                    โถ
+                </h3>
+
+                <div class="member-username">
+                    @nongsakkarin
+                </div>
+
+                <p class="member-desc">
+                    สมาชิกสายเกม
+                    ที่พร้อมเข้าสู่ความวุ่นวายของสุสาน
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@nongsakkarin"
+                    target="_blank"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- JIM -->
+
+            <article
+                class="member-card"
+                id="jim"
+            >
+
+                <div class="member-number">
+                    08
+                </div>
+
+                <div class="member-image">
+                    <img
+                        src="https://yt3.ggpht.com/at40Mg5OCoLYx5xNMwSnTEx2JKjiq__7vDjbRoiRNN0Gvs_4T_T2otVjA9SDNjrSFTDHDh3cZQ=s176-c-k-c0x00ffffff-no-rj-mo"
+                        alt="จิม"
+                    >
+                </div>
+
+                <h3 class="member-name">
+                    จิม
+                </h3>
+
+                <div class="member-username">
+                    @Packawatz
+                </div>
+
+                <p class="member-desc">
+                    สมาชิกสุสานหอย
+                    ที่พร้อมสร้างเรื่องราวและคอนเทนต์ไปด้วยกัน
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@Packawatz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- MING -->
+
+            <article
+                class="member-card"
+                id="ming"
+            >
+
+                <div class="member-number">
+                    09
+                </div>
+
+                <div class="member-image">
+                    <img
+                        src="https://yt3.ggpht.com/m1d4MlnufscjMf8quNJy8ydU2niedXteDlf5UdSBROhMqSubYYFNWr0oaeEhVA8gH0VgjQgLMA=s176-c-k-c0x00ffffff-no-rj-mo"
+                        alt="หมิง"
+                    >
+                </div>
+
+                <h3 class="member-name">
+                    หมิง
+                </h3>
+
+                <div class="member-username">
+                    @jghostboyd
+                </div>
+
+                <p class="member-desc">
+                    สมาชิกสุสานหอย
+                    ที่พร้อมสร้างเรื่องราวและคอนเทนต์ไปด้วยกัน
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@jghostboyd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+            <!-- SAM -->
+
+            <article
+                class="member-card"
+                id="sam"
+            >
+
+                <div class="member-number">
+                    10
+                </div>
+
+                <div class="member-image">
+                    <img
+                        src="https://yt3.ggpht.com/HvXhBjhKnO8s1o54c56pJCk7GU5ikIN0_Kvci7_RdBwBe2O7XyK4bN9dqw1lxgNoidBCB3wm8g=s176-c-k-c0x00ffffff-no-rj-mo"
+                        alt="แซม"
+                    >
+                </div>
+
+                <h3 class="member-name">
+                    แซม
+                </h3>
+
+                <div class="member-username">
+                    @SaBeRz15
+                </div>
+
+                <p class="member-desc">
+                    สมาชิกสุสานหอย
+                    ที่พร้อมสร้างเรื่องราวและคอนเทนต์ไปด้วยกัน
+                </p>
+
+                <a
+                    class="member-youtube"
+                    href="https://www.youtube.com/@SaBeRz15"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ▶ YouTube
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ASTROLOGY FORTUNE
+===================================================== -->
+
+<section
+class="fortune-section"
+id="fortune"
+>
+
+    <div class="fortune-moon"></div>
+
+    <div class="container">
+
+        <div class="section-title fortune-title">
+
+            <div class="small">
+                ASTROLOGY • ZODIAC • DESTINY
+            </div>
+
+            <h2>
+                เปิดไพ่แห่งโชคชะตา
+            </h2>
+
+            <p>
+                ปล่อยให้ดวงดาวเลือกสมาชิกจากสุสานหอยให้คุณ
+            </p>
+
+        </div>
+
+        <div class="astro-stage">
+
+            <div class="astro-orbit one"></div>
+            <div class="astro-orbit two"></div>
+            <div class="astro-orbit three"></div>
+            <div class="zodiac-ring"></div>
+
+            <div class="zodiac-sign" style="--i:0">♈</div>
+            <div class="zodiac-sign" style="--i:1">♉</div>
+            <div class="zodiac-sign" style="--i:2">♊</div>
+            <div class="zodiac-sign" style="--i:3">♋</div>
+            <div class="zodiac-sign" style="--i:4">♌</div>
+            <div class="zodiac-sign" style="--i:5">♍</div>
+            <div class="zodiac-sign" style="--i:6">♎</div>
+            <div class="zodiac-sign" style="--i:7">♏</div>
+            <div class="zodiac-sign" style="--i:8">♐</div>
+            <div class="zodiac-sign" style="--i:9">♑</div>
+            <div class="zodiac-sign" style="--i:10">♒</div>
+            <div class="zodiac-sign" style="--i:11">♓</div>
+
+            <div class="constellation">
+                <span style="left:16%;top:31%"></span>
+                <span style="left:28%;top:18%"></span>
+                <span style="left:42%;top:27%"></span>
+                <span style="left:57%;top:15%"></span>
+                <span style="left:71%;top:31%"></span>
+                <span style="left:80%;top:48%"></span>
+                <span style="left:68%;top:66%"></span>
+                <span style="left:49%;top:78%"></span>
+                <span style="left:30%;top:68%"></span>
+                <span style="left:19%;top:50%"></span>
+            </div>
+
+            <div class="astro-core">
+
+                <div class="astro-glyph"></div>
+
+                <div class="astro-label">
+                    THE STARS KNOW
+                </div>
+
+                <div
+                class="tarot-wrapper"
+                id="tarotWrapper"
+                >
+
+                    <div
+                    class="magic-circle"
+                    id="magicCircle"
+                    ></div>
+
+                    <div
+                    class="tarot-card"
+                    id="tarotCard"
+                    onclick="manualFlip()"
+                    >
+
+                        <div class="tarot-front">
+
+                            <div class="tarot-zodiac">
+                                ☾ ✦ ☼ ✦ ☽
+                            </div>
+
+                            <div class="tarot-symbol">
+                                ☾
+                            </div>
+
+                            <h3>
+                                SUSANHOI
+                            </h3>
+
+                            <p>
+                                THE FATE AWAITS
+                            </p>
+
+                        </div>
+
+                        <div class="tarot-back">
+
+                            <img
+                            id="fortuneImage"
+                            src=""
+                            alt="fortune"
+                            >
+
+                            <h3
+                            id="fortuneName"
+                            >
+                                ?
+                            </h3>
+
+                            <p
+                            id="fortuneText"
+                            >
+                                ไพ่ยังไม่ถูกเปิด
+                            </p>
+
+                            <button
+                            class="fortune-read-more"
+                            id="fortuneReadMore"
+                            type="button"
+                            >
+                                ดูเพิ่มเติม
+                            </button>
+
+                            <p
+                            class="luck"
+                            id="fortuneLuck"
+                            >
+                                ★★★★★
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div
+        class="fortune-status"
+        id="fortuneStatus"
+        >
+            THE STARS ARE WAITING...
+        </div>
+
+        <button
+        class="fortune-btn"
+        id="fortuneButton"
+        onclick="drawFortune()"
+        >
+            ✦ เปิดไพ่ชะตา ✦
+        </button>
+
+        <div class="fortune-hint">
+            คลิกไพ่เพื่อเปิดเอง หรือให้ดวงดาวสุ่มโชคชะตา
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026
+            <strong>SUSANHOI</strong>
+            — THE GRAVEYARD COMMUNITY
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   MEMBER DATA
+===================================================== */
+
+const members = [
+
+    {
+        id:"red",
+        name:"เรด",
+        username:"RedxZeRs",
+        keywords:"เรด red redxzers",
+        image:"https://cdn.discordapp.com/attachments/424233352804040724/1556755833214214235/images.png?backend=b2&ex=6ac55159&is=6ac3ffd9&hm=88dff574346aa321711fd81f248a97a86f40a762994637ce2b0ab8362c6f5070",
+        fortune:"ชื่อของผู้ที่แค่ได้ยินก็ต้องจำได้ เป็นคนซื่อ ๆ เอ๋อ ๆ คล้ายเด็กที่ชอบสร้างความวุ่นวายแบบไม่รู้ตัว แถมยังมีแว่นเป็นเอกลักษณ์และมีพรสวรรค์ด้านการทำให้คนรอบตัวขำอยู่เสมอ ดวงชะตาเป็นคนทะเยอทะยาน ชอบเสี้ยม ชอบยุยง และมีความสุขเมื่อเห็นคนทะเลาะกัน ราวกับเกิดมาเพื่อเป็นผู้ชมแถวหน้าของความวุ่นวาย อย่างไรก็ตาม เรดเป็นคนปรับตัวเก่งมาก เข้ากับสถานการณ์ได้แทบทุกแบบและเอาตัวรอดได้ดี มีไอเดียแปลกใหม่อยู่เสมอ แม้ภายนอกจะดูเอ๋อ ๆ แต่จริง ๆ แล้วคิดอะไรอยู่มากกว่าที่คนอื่นคาด และที่สำคัญคือใจอ่อนง่ายมาก จนบางครั้งแผนร้ายที่คิดไว้ก็แพ้ความสงสารของตัวเอง",
+        luck:"โชคด้านความวุ่นวาย ★★★★★"
+    },
+
+    {
+        id:"dzer0",
+        name:"นนท์",
+        username:"DZER0",
+        keywords:"นนท์ dzer0 dzero",
+        image:"https://cdn.discordapp.com/attachments/424233352804040724/1556753149124018186/g6YW9KHFVM-DHWGeH99I58gmZCG_LvJ0SMOiH0tMyg5SnIK3F98_ZT8eU4c8K8i2osGVQa5-s900-c-k-c0x00ffffff-no-rj.png?backend=b2&ex=6ac54ed9&is=6ac3fd59&hm=78360ec6065cf9776a19e5e94f3c6724581ee62834e12e73384a62b0a8efc55c",
+        fortune:"ชื่อของผู้ที่มีดวงชะตาไม่ธรรมดา เป็นคนพูดเก่ง ชอบสร้างสีสันให้คนรอบตัว และมักมีมุกกวน ๆ โผล่มาแบบไม่มีใครร้องขอ ดวงยังบ่งบอกว่าเป็นคนขยันและมีความพยายามสูง แต่มีสิ่งหนึ่งที่ฉุดรั้งชีวิตไว้ นั่นคือ Valorant และบุฟเฟ่ต์ที่มักทำให้เงินในกระเป๋าหายไปอย่างรวดเร็ว",
+        luck:"โชคด้านความฮาและความพยายาม ★★★★★"
+    },
+
+    {
+        id:"major",
+        name:"เมเจอร์",
+        username:"_MAJOR",
+        keywords:"เมเจอร์ major _major",
+        image:"https://cdn.discordapp.com/attachments/424233352804040724/1556755915661910226/npAv2jHcDR3aUnnl6t5CyEpN5IZ-7jnV5pAwN5rA6KbhH7ErAMp__WuwuAoGm07Vzqjec5cTs160-c-k-c0x00ffffff-no-rj.png?backend=b2&ex=6ac5516d&is=6ac3ffed&hm=02ce589581d6f11557f4fc066a7026b433db9aa1a21c4446fdce0c834656355d",
+        fortune:"ชื่อของผู้ที่มีสัญชาตญาณเรื่องความรักแรงกล้า จนบางครั้งใช้หัวใจนำทางชีวิต เป็นคนใจกว้าง ชอบแบ่งปันสิ่งดี ๆ ให้เพื่อน พี่ และน้อง จนได้รับฉายา “เสือสายเปย์” ดวงชีวิตมักวนเวียนอยู่กับการปาร์ตี้และความสนุกสนาน หาเงินเก่งแต่ก็มีดวงเงินมาไวไปไว ใช้เพลินจนแทบไม่เหลือให้ตัวเอง สุดท้ายต้องมานั่งเครียดกับบัญชีธนาคาร แต่ถึงอย่างนั้นก็ยังเป็นคนที่พร้อมแบ่งปันให้คนรอบตัวเสมอ",
+        luck:"โชคด้านมิตรภาพและความสนุก ★★★★☆"
+    },
+
+    {
+        id:"no",
+        name:"โน่",
+        username:"exsosit",
+        keywords:"โน่ no exsosit",
+        image:"https://yt3.googleusercontent.com/ytc/AIdro_myX75FNerDyeefUi6Do1DaRm6GdASrnVElM-IuH-Cy-if_84YGmgk0ZIHdj0LngYUmlgU=s160-c-k-c0x00ffffff-no-rj",
+        fortune:"ชื่อของผู้ที่ดวงชะตาเต็มไปด้วยความสวนทาง เป็นคนที่เรื่องความรักมักไม่ค่อยเป็นใจ ถึงขั้นตาดีแค่ไหนก็เหมือนมองไม่เห็นสัญญาณเตือน และมักใช้หัวใจนำทางจนหลงอยู่บ่อยครั้ง ดวงตาอาจเล็กแต่กลับมีเสียงที่ไพเราะ ร้องเพลงเก่งอย่างไม่น่าเชื่อ อีกทั้งยังมีพรสวรรค์ด้านอิเล็กทรอนิกส์และทำอาหารได้เล็กน้อย โดยรวมเป็นคนหน้าตาโดดเด่น มีความสามารถหลายด้าน แต่ดวงความรักยังต้องพึ่งพาโชคอยู่มาก เพราะมองโลกเก่ง แต่เรื่องความรักมักมองไม่ค่อยออก",
+        luck:"โชคด้านเสียงเพลง ★★★★☆"
+    },
+
+    {
+        id:"tang",
+        name:"ตัง",
+        username:"tannnnnnng",
+        keywords:"ตัง สตางค์ tang tannnnnnng founder ผู้ก่อตั้ง",
+        image:"https://yt3.ggpht.com/eT2J3pm_NaokeAxqGZWlO7ieB5SrzWYVUrfNaNOS1C7We8zm1bOPhL3XeG2ASZM1wJm4o4p6nTI=s176-c-k-c0x00ffffff-no-rj-mo",
+        fortune:"ชื่อของผู้ที่มีดวงนัดแล้วมีสิทธิ์บิด แต่หากเป็นเรื่องของแฟนแล้วจะมีความรับผิดชอบขึ้นมาทันที เพราะดวงความรักแรงกล้าจนแฟนต้องมาก่อนเพื่อนเสมอ ดวงยามเช้ามีเอกลักษณ์ เพราะมักตื่นมาพร้อมภารกิจ “เคารพธงชาติ” เป็นประจำ ด้านสังคมเป็นคนรักเพื่อนและคอแข็งพอตัว แต่ดวงการเงินน่าเป็นห่วง เพราะมีเกณฑ์นำเงินไปใช้กับการเที่ยวและความสนุกจนหมดอย่างรวดเร็ว ส่วนเรื่องเรียนอยู่ในเกณฑ์ “เรียนไปวัน ๆ เดี๋ยวค่อยว่ากัน” โดยรวมเป็นคนใช้ชีวิตสบาย ๆ รักเพื่อนรักแฟน แต่ถ้าอยากให้อนาคตรุ่ง ต้องเริ่มจริงจังกับการเรียนและการเก็บเงินบ้าง",
+        luck:"โชคด้านความรักและความสนุก ★★★★☆"
+    },
+
+    {
+        id:"june",
+        name:"จูน",
+        username:"jxnee.0z",
+        keywords:"จูน june jxnee",
+        image:"https://cdn.discordapp.com/attachments/1417508123916107908/1556758359363817585/IMG_2579.jpg?backend=b2&ex=6ac553b4&is=6ac40234&hm=c0ee0c7578be872cf382efa838f599123aeaf8531f358af38c090ee26a83c3e8",
+        fortune:"ชื่อของผู้ที่มีดวงสมพงศ์ด้านความรักกับคนจากจังหวัดชลบุรีอย่างน่าประหลาด แต่ถึงจะมีดวงคู่สมพงศ์ ก็ยังมักเจอความรักที่ไม่ชัดเจนและทำให้ต้องปวดหัวอยู่เสมอ ดวงยังบอกว่าเป็นคนที่มีสถานะเป็นกระสอบทรายประจำกลุ่ม คอยรับทั้งคำด่าและอารมณ์ของเพื่อน ๆ อยู่เป็นประจำ แม้ดวงความรักจะดูเหนื่อย แต่ดวงทรัพย์กลับโดดเด่น เพราะมีวาสนาจากครอบครัว บ้านมีต้นทุนชีวิตที่ดี ดวงตาที่ปูดโตและเบิกกว้างสามารถมองเห็นได้แทบทุกสิ่ง ยกเว้นความรักดี ๆ ที่อยู่ตรงหน้า เพราะจิตใจยังคงวนเวียนอยู่กับอดีต หากปล่อยอดีตลงได้ มีเกณฑ์ได้พบความรักที่ชัดเจนและสมหวังมากขึ้น",
+        luck:"โชคด้านทรัพย์และความรัก ★★★★★"
+    },
+
+    {
+        id:"tho",
+        name:"โถ",
+        username:"nongsakkarin",
+        keywords:"โถ tho nongsakkarin",
+        image:"https://yt3.ggpht.com/j3TR2-Dz1bKSNuBff4J3tSU4PyUxBiLCrNwQYQ0gbaDPxfQPqxLZ_1hDVhdsE09VHrmBccYd1g=s176-c-k-c0x00ffffff-no-rj-mo",
+        fortune:"ชื่อของผู้ที่ผ่านสมรภูมิเรื่องความรักมาอย่างโชกโชน จนวันนี้เริ่มเข้าสู่เส้นทางแห่งการปล่อยวาง ดวงความรักโดดเด่นมาก เป็นคนรักแฟนและทุ่มเทให้คนรักแบบสุดใจ ช่วงนี้ยิ่งรู้จักวางเรื่องวุ่นวายลง ก็ยิ่งมีเกณฑ์ได้พบความสงบและความสุขมากขึ้น",
+        luck:"โชคด้านความรัก ★★★★★"
+    },
+
+    {
+        id:"jim",
+        name:"จิม",
+        username:"Packawatz",
+        keywords:"จิม jim packawatz",
+        image:"https://yt3.ggpht.com/at40Mg5OCoLYx5xNMwSnTEx2JKjiq__7vDjbRoiRNN0Gvs_4T_T2otVjA9SDNjrSFTDHDh3cZQ=s176-c-k-c0x00ffffff-no-rj-mo",
+        fortune:"ชื่อของผู้ที่มีวุฒิภาวะสูงเกินวัย เป็นคนที่เข้าใจคนอื่นและให้คำปรึกษาได้แทบทุกเรื่อง ยกเว้นเรื่องของตัวเอง ดวงชะตายังบ่งบอกถึงสายเลือดนักสู้จากตระกูล “เค้าแก่น้อย” ผสมเชื้อสายจีน และมีดวงตาที่เล็กจนบางครั้งต้องใช้ใจมองแทน แม้ภายนอกจะดูนิ่งและเป็นผู้ใหญ่ แต่แท้จริงเป็นคนอบอุ่น เอาใจใส่ และคอยดูแลคนรอบข้างเสมอ ส่วนพรสวรรค์พิเศษคือการประกาศให้โลกรู้ว่า “ขอแข็ง” จนคนรอบตัวแทบไม่มีใครเชื่ออีกต่อไป",
+        luck:"โชคด้านคำปรึกษา ★★★★★"
+    },
+
+    {
+        id:"ming",
+        name:"หมิง",
+        username:"jghostboyd",
+        keywords:"หมิง ming jghostboyd",
+        image:"https://yt3.ggpht.com/m1d4MlnufscjMf8quNJy8ydU2niedXteDlf5UdSBROhMqSubYYFNWr0oaeEhVA8gH0VgjQgLMA=s176-c-k-c0x00ffffff-no-rj-mo",
+        fortune:"ชื่อของผู้ที่มีดวงชะตาแห่งการมา ๆ หาย ๆ อย่างแท้จริง เป็นคนตาเล็กพอประมาณ มีวิถีชีวิตผูกพันกับการกรีดยาง และมีทรงผมหยิกที่เป็นเอกลักษณ์จนโดดเด่นกว่าคนทั่วไป ดวงความรักแรงมากถึงขั้นให้คนสำคัญมาก่อนเสมอ ไม่ว่านัดจะใหญ่แค่ไหน ต่อให้รับปากไว้แล้ว สุดท้ายมีเกณฑ์ได้ยินประโยคว่า “ผมไม่น่าได้ไปแล้วว่ะพี่” ด้านการงานมีดวงทำงานแบบระยะสั้น คือทำแป๊บเดียวแล้วหายตัวอย่างลึกลับ แต่ถึงจะบิดนัดเก่งก็เป็นคนอารมณ์ดี ตลก และมีพรสวรรค์ด้านการร้องเพลง โดยรวมเป็นคนที่ถ้ารับปากว่าจะมา อย่าเพิ่งดีใจจนกว่าจะเห็นตัวจริง เพราะดวงบอกว่ามีโอกาสหายก่อนถึงวันนัดเสมอ",
+        luck:"โชคด้านการเอาตัวรอด ★★★★★"
+    },
+
+    {
+        id:"sam",
+        name:"แซม",
+        username:"SaBeRz15",
+        keywords:"แซม sam saberz15",
+        image:"https://yt3.ggpht.com/HvXhBjhKnO8s1o54c56pJCk7GU5ikIN0_Kvci7_RdBwBe2O7XyK4bN9dqw1lxgNoidBCB3wm8g=s176-c-k-c0x00ffffff-no-rj-mo",
+        fortune:"ชื่อของผู้ที่มีรูปร่างเล็กแต่พลังงานไม่เล็ก เป็นคนหูกาง ติดตลก และมีความสามารถรอบด้านจนเพื่อน ๆ มักเรียกใช้ได้แทบทุกเรื่อง แต่ดวงจิตใจค่อนข้างอ่อนไหว ขี้น้อยใจและคิดมากเก่ง แม้บางครั้งจะทำเป็นไม่สนใจก็ตาม ดวงด้านการเล่นเกมโดดเด่น มีพรสวรรค์ในการกดปุ่มและเอาชนะศัตรูอย่างน่าประหลาด ส่วนเรื่องปาร์ตี้นั้นมีเกณฑ์หลงใหลในความสนุกและสิ่งมึนเมา จึงควรระวังการดื่มหนักหรือการใช้สิ่งที่อาจนำปัญหามาให้ โดยรวมเป็นคนเก่ง อารมณ์ดี และมีของในตัวเยอะ เพียงแต่ต้องดูแลตัวเองให้ดี แล้วดวงชีวิตจะไปได้ไกลกว่านี้มาก",
+        luck:"โชคด้านเกมและความสามารถ ★★★★★"
+    }
+];
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+document.getElementById("searchInput");
+
+const searchResults =
+document.getElementById("searchResults");
+
+
+searchInput.addEventListener(
+"input",
+function(){
+
+    const value =
+    this.value
+    .toLowerCase()
+    .trim();
+
+    searchResults.innerHTML="";
+
+
+    if(!value){
+
+        searchResults
+        .classList
+        .remove("show");
+
+        return;
+    }
+
+
+    const results =
+    members.filter(member =>
+        member.keywords
+        .toLowerCase()
+        .includes(value)
+    );
+
+
+    if(results.length===0){
+
+        searchResults.innerHTML=`
+            <div class="search-result">
+                ไม่พบสมาชิก
+            </div>
+        `;
+
+    }
+
+    else{
+
+        results.forEach(member=>{
+
+            const item =
+            document.createElement("div");
+
+            item.className=
+            "search-result";
+
+            item.innerHTML=`
+                ${member.name}
+                <small>
+                    @${member.username}
+                </small>
+            `;
+
+
+            item.onclick=()=>{
+
+                const target =
+                document.getElementById(
+                    member.id
+                );
+
+
+                if(target){
+
+                    target.scrollIntoView({
+                        behavior:"smooth",
+                        block:"center"
+                    });
+
+
+                    target.classList.remove(
+                        "highlight"
+                    );
+
+
+                    setTimeout(()=>{
+
+                        target.classList.add(
+                            "highlight"
+                        );
+
+                    },300);
+
+                }
+
+
+                searchInput.value="";
+
+                searchResults
+                .classList
+                .remove("show");
+
+            };
+
+
+            searchResults.appendChild(item);
+
+        });
+
+    }
+
+
+    searchResults
+    .classList
+    .add("show");
+
+});
+
+
+/* ESC */
+
+searchInput.addEventListener(
+"keydown",
+function(e){
+
+    if(e.key==="Escape"){
+
+        this.value="";
+
+        searchResults
+        .classList
+        .remove("show");
+
+    }
+
+});
+
+
+/* CLICK OUTSIDE */
+
+document.addEventListener(
+"click",
+function(e){
+
+    if(
+        !e.target.closest(".search-box")
+    ){
+
+        searchResults
+        .classList
+        .remove("show");
+
+    }
+
+});
+
+
+/* =====================================================
+   TAROT SYSTEM
+===================================================== */
+
+const tarotCard =
+document.getElementById("tarotCard");
+
+const tarotWrapper =
+document.getElementById("tarotWrapper");
+
+const magicCircle =
+document.getElementById("magicCircle");
+
+const fortuneStatus =
+document.getElementById("fortuneStatus");
+
+const fortuneButton =
+document.getElementById("fortuneButton");
+
+let isDrawing=false;
+
+
+/* =====================================================
+   DRAW FORTUNE
+===================================================== */
+
+function drawFortune(){
+
+    if(isDrawing) return;
+
+    isDrawing=true;
+
+    fortuneButton.disabled=true;
+
+    tarotCard.classList.remove(
+        "flipped"
+    );
+
+    tarotCard.classList.add(
+        "drawing"
+    );
+
+    tarotWrapper.classList.add(
+        "drawing"
+    );
+
+    magicCircle.classList.add(
+        "active"
+    );
+
+
+    /* suspense */
+
+    fortuneStatus.textContent=
+        "THE FATE IS DECIDING...";
+
+    fortuneStatus.classList.add(
+        "active"
+    );
+
+
+    /* phase 1 */
+
+    setTimeout(()=>{
+
+        fortuneStatus.textContent=
+            "THE SPIRITS ARE AWAKENING...";
+
+    },700);
+
+
+    /* phase 2 */
+
+    setTimeout(()=>{
+
+        fortuneStatus.textContent=
+            "SOMETHING IS COMING...";
+
+    },1400);
+
+
+    /* phase 3 */
+
+    setTimeout(()=>{
+
+        fortuneStatus.textContent=
+            "THE CARD HAS CHOSEN...";
+
+    },2100);
+
+
+    /* choose result */
+
+    setTimeout(()=>{
+
+        const randomIndex =
+        Math.floor(
+            Math.random() *
+            members.length
+        );
+
+
+        const member =
+        members[randomIndex];
+
+
+        document.getElementById(
+            "fortuneImage"
+        ).src=member.image;
+
+
+        document.getElementById(
+            "fortuneName"
+        ).textContent=member.name;
+
+
+        document.getElementById(
+            "fortuneText"
+        ).textContent=member.fortune;
+
+
+        document.getElementById(
+            "fortuneLuck"
+        ).textContent=member.luck;
+
+
+        tarotCard.classList.remove(
+            "drawing"
+        );
+
+        tarotWrapper.classList.remove(
+            "drawing"
+        );
+
+        magicCircle.classList.remove(
+            "active"
+        );
+
+
+        fortuneStatus.textContent=
+            "YOUR FATE HAS BEEN REVEALED";
+
+
+        fortuneStatus.classList.remove(
+            "active"
+        );
+
+
+        /* reveal */
+
+        setTimeout(()=>{
+
+            tarotCard.classList.add(
+                "flipped"
+            );
+
+        },250);
+
+
+        setTimeout(()=>{
+
+            isDrawing=false;
+
+            fortuneButton.disabled=false;
+
+        },1200);
+
+
+    },2800);
+
+}
+
+
+/* =====================================================
+   MANUAL CARD FLIP
+===================================================== */
+
+function manualFlip(){
+
+    if(isDrawing) return;
+
+    tarotCard.classList.toggle(
+        "flipped"
+    );
+
+}
+
+
+/* =====================================================
+   FIREFLIES
+===================================================== */
+
+for(let i=0;i<25;i++){
+
+    const firefly =
+    document.createElement("div");
+
+    firefly.className=
+    "firefly";
+
+
+    firefly.style.left =
+    Math.random()*100 + "%";
+
+
+    firefly.style.top =
+    Math.random()*85 + "%";
+
+
+    firefly.style.setProperty(
+        "--x",
+        (Math.random()*120-60)+"px"
+    );
+
+
+    firefly.style.setProperty(
+        "--y",
+        (Math.random()*100-50)+"px"
+    );
+
+
+    firefly.style.setProperty(
+        "--duration",
+        (3+Math.random()*6)+"s"
+    );
+
+
+    document.body.appendChild(
+        firefly
+    );
+
+}
+
+</script>
+
+
+
+<!-- FULL FORTUNE MODAL -->
+<div class="fortune-modal" id="fortuneModal" aria-hidden="true">
+    <div class="fortune-modal-box" role="dialog" aria-modal="true" aria-labelledby="fortuneModalName">
+        <button class="fortune-modal-close" id="fortuneModalClose" aria-label="ปิด">×</button>
+        <div class="fortune-modal-label">FULL DESTINY READING</div>
+        <h3 id="fortuneModalName">?</h3>
+        <p id="fortuneModalText">ยังไม่มีคำทำนาย</p>
+    </div>
+</div>
+
+<script>
+/* FULL FORTUNE READING */
+(function(){
+    const modal=document.getElementById("fortuneModal");
+    const close=document.getElementById("fortuneModalClose");
+    const more=document.getElementById("fortuneReadMore");
+    const modalName=document.getElementById("fortuneModalName");
+    const modalText=document.getElementById("fortuneModalText");
+    const fortuneText=document.getElementById("fortuneText");
+    const fortuneName=document.getElementById("fortuneName");
+
+    function openFortune(){
+        modalName.textContent=fortuneName.textContent || "คำทำนาย";
+        modalText.textContent=fortuneText.textContent || "ยังไม่มีคำทำนาย";
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden","false");
+        document.body.style.overflow="hidden";
+    }
+
+    function closeFortune(){
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden","true");
+        document.body.style.overflow="";
+    }
+
+    more.addEventListener("click",function(e){
+        e.stopPropagation();
+        openFortune();
+    });
+    close.addEventListener("click",closeFortune);
+    modal.addEventListener("click",function(e){
+        if(e.target===modal) closeFortune();
+    });
+    document.addEventListener("keydown",function(e){
+        if(e.key==="Escape" && modal.classList.contains("show")) closeFortune();
+    });
+})();
+</script>
+</body>
+</html>
